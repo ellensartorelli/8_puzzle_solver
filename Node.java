@@ -114,61 +114,58 @@ public class Node{
 	 */
 	public ArrayList<int[][]> expand()
 	{
-		ArrayList<int[][]> nodeslist = new ArrayList<int[][]>();
+		ArrayList<int[][]> nodelist = new ArrayList<int[][]>();
 
 		//If the '0' (blank spot) is at board[0][0], we can either move the blank
 		//down or to the right.
 		if(board[0][0] == 0){
-			nodeslist.add(moveBlankDown(0, 0));
-			nodeslist.add(moveBlankRight(0, 0));
+			nodelist.add(moveBlankDown(0, 0));
+			nodelist.add(moveBlankRight(0, 0));
 			//System.out.println("case 1");
 		}
-    	/*TO DO*/
-    if(board[0][1] == 0){
-      nodelist.add(moveBlankDown(0,1));
-      nodelist.add(moveBlankRight(0,1));
-      nodelist.add(moveBlankLeft(0,1));
-    }
-    if(board[0][2] == 0){
-      nodelist.add(moveBlankDown(0,2));
-      nodelist.add(moveBlankLeft(0,2));
-
-    }
-    if(board[1][0] == 0){
-      nodelist.add(moveBlankDown(1,0));
-      nodelist.add(moveBlankRight(1,0));
-      nodelist.add(moveBlankUp(1,0));
-
-    }
-    if(board[1][1] == 0){
-      nodelist.add(moveBlankDown(1,1));
-      nodelist.add(moveBlankRight(1,1));
-      nodelist.add(moveBlankLeft(1,1));
-      nodelist.add(moveBlankUp(1,1))
-
-    }
-    if(board[1][2] == 0){
-      nodelist.add(moveBlankDown(1,2));
-      nodelist.add(moveBlankUp(1,2))
-      nodelist.add(moveBlankLeft(1,2));
-
-    }
-    if(board[2][0] == 0){
-      nodelist.add(moveBlankUp(2,0));
-      nodelist.add(moveBlankRight(2,0));
-
-    }
-    if(board[2][1] == 0){
-      nodelist.add(moveBlankUp(2,1));
-      nodelist.add(moveBlankRight(2,1));
-      nodelist.add(moveBlankLeft(2,1));
-
-    }
-    if(board[2][2] == 0){
-      nodelist.add(moveBlankUp(2,2));
-      nodelist.add(moveBlankLeft(2,2));
-    }
-		return nodeslist;
+	    	/*TO DO*/
+	    if(board[0][1] == 0){
+	      nodelist.add(moveBlankDown(0,1));
+	      nodelist.add(moveBlankRight(0,1));
+	      nodelist.add(moveBlankLeft(0,1));
+	    }
+	    if(board[0][2] == 0){
+	      nodelist.add(moveBlankDown(0,2));
+	      nodelist.add(moveBlankLeft(0,2));
+	    }
+	    if(board[1][0] == 0){
+	      nodelist.add(moveBlankDown(1,0));
+	      nodelist.add(moveBlankRight(1,0));
+	      nodelist.add(moveBlankUp(1,0));
+	    }
+	    if(board[1][1] == 0){
+	      nodelist.add(moveBlankDown(1,1));
+	      nodelist.add(moveBlankRight(1,1));
+	      nodelist.add(moveBlankLeft(1,1));
+	      nodelist.add(moveBlankUp(1,1));
+	    }
+	    if(board[1][2] == 0){
+	      nodelist.add(moveBlankDown(1,2));
+	      nodelist.add(moveBlankUp(1,2));
+	      nodelist.add(moveBlankLeft(1,2));
+	
+	    }
+	    if(board[2][0] == 0){
+	      nodelist.add(moveBlankUp(2,0));
+	      nodelist.add(moveBlankRight(2,0));
+	
+	    }
+	    if(board[2][1] == 0){
+	      nodelist.add(moveBlankUp(2,1));
+	      nodelist.add(moveBlankRight(2,1));
+	      nodelist.add(moveBlankLeft(2,1));
+	
+	    }
+	    if(board[2][2] == 0){
+	      nodelist.add(moveBlankUp(2,2));
+	      nodelist.add(moveBlankLeft(2,2));
+	    }
+		return nodelist;
 	}
 
 
