@@ -228,7 +228,12 @@ public class EightsPlayer {
 
 			if(node.getparent != null){
 				numNodes++;
-				printSolution(node.getparent);
+				Node parent = node.getparent();
+				printSolution(parent.print(parent));
+			}
+			else{
+				printSolution(node.print(node));
+
 			}
 			//Print board readeably
 			//Node.print(node);
