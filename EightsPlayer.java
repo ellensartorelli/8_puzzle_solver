@@ -226,14 +226,18 @@ public class EightsPlayer {
 
     	/*TO DO*/
 
+			if(node.getparent != null){
+				numNodes++;
+				printSolution(node.getparent);
+			}
 			//Print board readeably
-			Node.print(node);
+			//Node.print(node);
 
-			//Use parent to keep track of steps 
+			//Use parent to keep track of steps
 			//?????????
 
 			//Increment numNodes when new state is generated (ie: inserted in frontier)
-			numNodes++;
+
 
 
 
