@@ -239,6 +239,8 @@ public class EightsPlayer {
 			for(int i = path.size()-1; i >= 0; i--){
 				path.get(i).print(path.get(i));
 			}
+			
+			nummoves = path.size();
 
     }
 
@@ -256,20 +258,25 @@ public class EightsPlayer {
 		ArrayList<Node> Explored = new ArrayList<Node>();
 
 		Frontier.add(initNode);
+		numnodes++;
 		int maxDepth = 13;
+		
+//		initNode.print(initNode);
 
 		/*TO DO*/
 		//while frontier is not empty
+		
 		while(Frontier.peek() != null){
 			//remove node to explore
 			Node current = Frontier.remove();
-
 			//move that node to Explored
 			Explored.add(current);
 			//if we have found the goal, return it
 			if(current.isGoal()){
+				printSolution(current);
 				return true;
 			}else if(current.getdepth() > maxDepth){
+				System.out.println("Exceeded max depth");
 				return false;
 			}else{
 				// save all of the potential board states into array
@@ -278,21 +285,23 @@ public class EightsPlayer {
 				int depth = current.getdepth() + 1;
 				//iterate through array and make nodes of all potential states
 				Boolean addNode = true;
-				for(int[][] temp : boardOptions){
-					Node option = new Node(current, depth, temp);
+				for(int i = 0; i < boardOptions.size(); i++){
+					int[][] temp = boardOptions.get(i);
 					//if potential state has already been explored
 					for(Node exploredNode : Explored){
-						if(Arrays.deepEquals(exploredNode.getboard(), option.getboard())){
+						if(Arrays.deepEquals(exploredNode.getboard(), temp)){		
 							//don't add state to Frontier
 							addNode = false;
-							break;
 						}
 					}
 					//if state has not been explored
 					if(addNode == true){
 					//add node to Frontier (because it is not in explored)
+						Node option = new Node(current, depth, temp);
 						Frontier.add(option);
+						numnodes++;
 					}
+					addNode=true;
 				}
 			}
 		}
@@ -311,6 +320,7 @@ public class EightsPlayer {
 	 */
 	public static boolean runAStar(Node initNode, int heuristic)
 	{
+		
 		return true;
 	}
 
