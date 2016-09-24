@@ -3,6 +3,7 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Arrays;
 
 
 /*
@@ -225,26 +226,19 @@ public class EightsPlayer {
     public static void printSolution(Node node) {
 
     	/*TO DO*/
+			ArrayList<Node> path = new ArrayList<Node>();
 
-			if(node.getparent != null){
-				numNodes++;
-				Node parent = node.getparent();
-				printSolution(parent.print(parent));
+			while(node.getparent() != null){
+				path.add(node);
+				node = node.getparent();
 			}
-			else{
-				printSolution(node.print(node));
+			//add the root node that does not have a parent
+			path.add(node);
 
+			//prints boards to show solving progression
+			for(int i = path.size()-1; i >= 0; i--){
+				path.get(i).print(path.get(i));
 			}
-			//Print board readeably
-			//Node.print(node);
-
-			//Use parent to keep track of steps
-			//?????????
-
-			//Increment numNodes when new state is generated (ie: inserted in frontier)
-
-
-
 
     }
 
@@ -264,10 +258,45 @@ public class EightsPlayer {
 		Frontier.add(initNode);
 		int maxDepth = 13;
 
-		return true;
-
 		/*TO DO*/
+		//while frontier is not empty
+		while(Frontier.peek() != null){
+			//remove node to explore
+			Node current = Frontier.remove();
 
+			//move that node to Explored
+			Explored.add(current);
+			//if we have found the goal, return it
+			if(current.isGoal()){
+				return true;
+			}else if(current.getdepth() > maxDepth){
+				return false;
+			}else{
+				// save all of the potential board states into array
+				ArrayList<int[][]> boardOptions = current.expand();
+				// get depth
+				int depth = current.getdepth() + 1;
+				//iterate through array and make nodes of all potential states
+				Boolean addNode = true;
+				for(int[][] temp : boardOptions){
+					Node option = new Node(current, depth, temp);
+					//if potential state has already been explored
+					for(Node exploredNode : Explored){
+						if(Arrays.deepEquals(exploredNode.getboard(), option.getboard())){
+							//don't add state to Frontier
+							addNode = false;
+							break;
+						}
+					}
+					//if state has not been explored
+					if(addNode == true){
+					//add node to Frontier (because it is not in explored)
+						Frontier.add(option);
+					}
+				}
+			}
+		}
+	return false;
 	}//BFS
 
 
