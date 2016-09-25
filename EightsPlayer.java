@@ -1,9 +1,11 @@
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Comparator;
 
 
 /*
@@ -239,7 +241,7 @@ public class EightsPlayer {
 			for(int i = path.size()-1; i >= 0; i--){
 				path.get(i).print(path.get(i));
 			}
-			
+
 			nummoves = path.size();
 
     }
@@ -260,12 +262,12 @@ public class EightsPlayer {
 		Frontier.add(initNode);
 		numnodes++;
 		int maxDepth = 13;
-		
+
 //		initNode.print(initNode);
 
 		/*TO DO*/
 		//while frontier is not empty
-		
+
 		while(Frontier.peek() != null){
 			//remove node to explore
 			Node current = Frontier.remove();
@@ -289,7 +291,7 @@ public class EightsPlayer {
 					int[][] temp = boardOptions.get(i);
 					//if potential state has already been explored
 					for(Node exploredNode : Explored){
-						if(Arrays.deepEquals(exploredNode.getboard(), temp)){		
+						if(Arrays.deepEquals(exploredNode.getboard(), temp)){
 							//don't add state to Frontier
 							addNode = false;
 						}
@@ -321,7 +323,73 @@ public class EightsPlayer {
 	public static boolean runAStar(Node initNode, int heuristic)
 	{
 		
-		return true;
+		 PriorityQueue<Node> Frontier = new PriorityQueue<Node>(1, new Comparator<Node>(){
+			 
+			 public int compare (Node n1, Node n2){
+				if(n1.getgvalue() + n1.gethvalue() <= n2.getgvalue() + n2.gethvalue()){
+					return 1;
+				}
+				else if(n1.getgvalue() + n1.gethvalue() == n2.getgvalue() + n2.gethvalue()){
+					return 0;
+				}
+				else{
+					return -1;
+				}
+			 }
+		 });
+			 
+		Queue<Node> Explored = new LinkedList<Node>();
+		initNode.setgvalue(0);
+		initNode.sethvalue(initNode.getManhattanDistanceSum( ));
+		Frontier.add(initNode);
+		
+		
+		numnodes++;
+		int maxDepth = 13;
+
+		while(!Frontier.isEmpty()){
+			Node current = Frontier.poll();
+			Explored.add(current);
+			
+			if(current.isGoal()){
+				printSolution(current);
+				return true;
+			}else if(current.getdepth() > maxDepth){
+				System.out.println("Exceeded max depth");
+				return false;
+			}else{
+				// save all of the potential board states into array
+				ArrayList<int[][]> boardOptions = current.expand();
+				// get depth
+				int depth = current.getdepth() + 1;
+				//iterate through array and make nodes of all potential states
+				Boolean addNode = true;
+				
+				
+				for(int i = 0; i < boardOptions.size(); i++){
+					int[][] temp = boardOptions.get(i);
+					//if potential state has already been explored
+					for(Node exploredNode : Explored){
+						if(Arrays.deepEquals(exploredNode.getboard(), temp)){
+							//don't add state to Frontier
+							addNode = false;
+							System.out.println("explored");
+						}
+					}
+					//if state has not been explored
+					if(addNode == true){
+					//add node to Frontier (because it is not in explored)
+						Node option = new Node(current, depth, temp);
+						option.setgvalue(current.getgvalue()+1);
+						option.sethvalue(option.getManhattanDistanceSum()); //double check 
+						Frontier.add(option);
+						numnodes++;
+					}
+					addNode=true;
+				}
+			}
+		}
+	return false;
 	}
 
 }
