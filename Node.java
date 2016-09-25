@@ -12,6 +12,7 @@ public class Node{
 	int[][] board;
     private Node parent;
     private int depth; //depth of this node
+    private int fn;
 
 
     //Added boards for my heuristic function
@@ -148,18 +149,18 @@ public class Node{
 	      nodelist.add(moveBlankDown(1,2));
 	      nodelist.add(moveBlankUp(1,2));
 	      nodelist.add(moveBlankLeft(1,2));
-	
+
 	    }
 	    if(board[2][0] == 0){
 	      nodelist.add(moveBlankUp(2,0));
 	      nodelist.add(moveBlankRight(2,0));
-	
+
 	    }
 	    if(board[2][1] == 0){
 	      nodelist.add(moveBlankUp(2,1));
 	      nodelist.add(moveBlankRight(2,1));
 	      nodelist.add(moveBlankLeft(2,1));
-	
+
 	    }
 	    if(board[2][2] == 0){
 	      nodelist.add(moveBlankUp(2,2));
@@ -397,7 +398,8 @@ public class Node{
     {
     	return this.hvalue;
     }
-
+    
+   
 
     /**
      * Used by A* Search only.
@@ -422,6 +424,19 @@ public class Node{
      */
     private static int getManhattanDistance(int row1, int col1, int row2, int col2) {
         return Math.abs(row1 - row2) + Math.abs(col1 - col2);
+    }
+    
+    public double getManhattanDistanceSum() {
+    	double mds = 0;
+    	for (int row = 0; row <3; row++){
+    		for(int column = 0; column < 3; column ++){
+    			int value = board[column][row];
+    			int x = (value-1)/3;
+    			int y = (value -1)%3;
+    			mds += getManhattanDistance(row, column, x, y);
+    		}
+    	}
+        return mds;
     }
 
 
