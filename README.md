@@ -2,7 +2,7 @@
 1. Joy Wood, Ellen Sartorelli
 2. Node.java, EightsPlayer.java
 3. No known bugs
-4. Our hueristic utlizes the approach of "divide and conquer" as it prioritizes the solving of the edges tiles in their correct locations to then reduce the complexity of the of the remaining problem (from a 3x3 square to a 2x2 square).
+4. Our hueristic utlizes the approach of "divide and conquer" as it prioritizes the proprer placement of the upper and left-most edges to then reduce the complexity of the of the remaining problem (when tiles 1, 2, 3, and 6 are in place, a 2x2 grid problem remains).
 
 |Case   	|  Number of moves 	|   Number of nodes generated	|   	|   	|
 |---	|---	|---	|---	|---	|
