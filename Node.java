@@ -406,15 +406,34 @@ public class Node{
      * Returns the heuristic value. The heuristic for the state of this node is the sum of Manhattan
      * distances from each tile's position to that tile's final position.
      */
-   // public double evaluateHeuristic() {
-        // TO DO
+    public double divideAndConquerHueristic() {
+    	//TO DO
         /*
          * Implementation notes:
          * Return your heuristic value here, based on the state configuration
          * stored in "int[][] board".
          * You may find the method "getManhattanDistance" useful.
          */
-    //}
+        double hValue = 0;
+//        int[] values = {1,2,3,6,8};
+   
+        
+     	for (int row = 0; row <3; row++){
+     		for(int column = 0; column < 3; column ++){
+     			int value = board[column][row];
+     			if(value != 0){
+	    			int x = (value-1)/3;
+	    			int y = (value-1)%3;
+     				if(value <= 3 || value == 6){
+    	    			hValue += 2*getManhattanDistance(row, column, y, x);
+     				}else{
+    	    			hValue += getManhattanDistance(row, column, y, x);
+     				}
+     			}
+     		}
+     	}
+         return hValue;
+    }
 
 
 
@@ -423,17 +442,23 @@ public class Node{
      * Returns the Manhattan distance between the given two cells of the 4x4 board.
      */
     private static int getManhattanDistance(int row1, int col1, int row2, int col2) {
+		//System.out.println("row1 - row2: "+ (row1-row2));
+
         return Math.abs(row1 - row2) + Math.abs(col1 - col2);
     }
     
     public double getManhattanDistanceSum() {
     	double mds = 0;
     	for (int row = 0; row <3; row++){
-    		for(int column = 0; column < 3; column ++){
+    		for(int column = 0; column <3; column ++){
     			int value = board[column][row];
-    			int x = (value-1)/3;
-    			int y = (value -1)%3;
-    			mds += getManhattanDistance(row, column, x, y);
+    			if(value!=0){
+	    			int x = (value-1)/3;
+	    			int y = (value-1)%3;
+//	    			System.out.println("current points: ("+column+", "+row+") and value: "+value);
+//	    			System.out.println("adding "+getManhattanDistance(row, column, y, x));
+	    			mds += getManhattanDistance(row, column, y, x);
+    			}
     		}
     	}
         return mds;
