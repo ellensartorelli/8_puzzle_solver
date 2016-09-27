@@ -1,4 +1,9 @@
 import java.util.*;
+/*
+ * Ellen Sartorelli, Joy Wood
+ * All group members were present and contributing during all work on this project.
+ * I have neither given nor recieved unauthorized aid on this assignment.
+ */
 
 /**
  * Represents a Node for the n-Puzzle
