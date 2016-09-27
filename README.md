@@ -17,12 +17,12 @@ We tested our heuristic against A* on one of the most difficult 8 puzzles, and t
 |   8|   5|   0|
 |  3|   2|  1|
 
-Our heuristic:
+Our heuristic:<br />
 Number of nodes generated to solve: 758<br />
 Number of moves to solve: 31<br />
 Number of solutions so far: 1<br />
 <br />
-A*:
+A*:<br />
 Number of nodes generated to solve: 13843<br />
 Number of moves to solve: 31<br />
 Number of solutions so far: 1<br />
