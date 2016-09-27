@@ -16,13 +16,13 @@ We tested our heuristic against A* on one of the most difficult 8 puzzles, and t
 |---|---|---|
 |   8|   5|   0|
 |  3|   2|  1|
-Number of nodes generated to solve: 758
-Number of moves to solve: 31
-Number of solutions so far: 1
-
-Number of nodes generated to solve: 13843
-Number of moves to solve: 31
-Number of solutions so far: 1
+Number of nodes generated to solve: 758<br />
+Number of moves to solve: 31<br />
+Number of solutions so far: 1<br />
+<br />
+Number of nodes generated to solve: 13843<br />
+Number of moves to solve: 31<br />
+Number of solutions so far: 1<br />
 
 |Case   	|  Number of moves 	|   Number of nodes generated	|   	|   	|
 |---	|---	|---	|---	|---	|
