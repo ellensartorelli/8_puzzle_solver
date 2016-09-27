@@ -122,7 +122,6 @@ public class Node{
 		if(board[0][0] == 0){
 			nodelist.add(moveBlankDown(0, 0));
 			nodelist.add(moveBlankRight(0, 0));
-			//System.out.println("case 1");
 		}
 	    	/*TO DO*/
 	    if(board[0][1] == 0){
@@ -415,8 +414,6 @@ public class Node{
          * You may find the method "getManhattanDistance" useful.
          */
         double hValue = 0;
-//        int[] values = {1,2,3,6,8};
-   
         
      	for (int row = 0; row <3; row++){
      		for(int column = 0; column < 3; column ++){
@@ -442,7 +439,6 @@ public class Node{
      * Returns the Manhattan distance between the given two cells of the 4x4 board.
      */
     private static int getManhattanDistance(int row1, int col1, int row2, int col2) {
-		//System.out.println("row1 - row2: "+ (row1-row2));
 
         return Math.abs(row1 - row2) + Math.abs(col1 - col2);
     }
@@ -455,8 +451,6 @@ public class Node{
     			if(value!=0){
 	    			int x = (value-1)/3;
 	    			int y = (value-1)%3;
-//	    			System.out.println("current points: ("+column+", "+row+") and value: "+value);
-//	    			System.out.println("adding "+getManhattanDistance(row, column, y, x));
 	    			mds += getManhattanDistance(row, column, y, x);
     			}
     		}
