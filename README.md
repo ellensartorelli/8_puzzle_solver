@@ -7,8 +7,7 @@
 |Case   	|  Number of moves 	|   Number of nodes generated	|   	|   	|
 |---	|---	|---	|---	|---	|
 |   	|   	|   BFS	|  A*(Man) 	| A*(Our Heur.)  	|
-| 1  	|   	|   	|   	|   	|
-|   2	|   	|   	|   	|   	|
+|   2	|  2 	|   14	|   5	|   5	|
 |   3	|   	|   	|   	|   	|
 |   4	|   	|   	|   	|   	|
 |   5	|   	|   	|   	|   	|
