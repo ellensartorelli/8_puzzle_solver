@@ -15,3 +15,7 @@
 |  Average for 500 iterations	|  NA 	|  1490682  	|  13063 	|  6438 	|
 
 
+
+ * All group members were present and contributing during all work on this project.
+ * I have neither given nor recieved unauthorized aid on this assignment.
+
