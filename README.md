@@ -2,7 +2,27 @@
 1. Joy Wood, Ellen Sartorelli
 2. Node.java, EightsPlayer.java
 3. No known bugs, but please open this file as markdown or else the table is very ugly. (link: https://github.com/ellensartorelli/cs311_hw1/blob/master/README.md)
-4. Our hueristic utlizes the approach of "divide and conquer" as it prioritizes the proprer placement of the upper and left-most edges to then reduce the complexity of the of the remaining problem (when tiles 1, 2, 3, and 6 are in place, a 2x2 grid problem remains).
+
+Our hueristic utilizes the approach of "divide and conquer" as it prioritizes the proper placement of the upper and left-most edges to  reduce the complexity of the remaining problem. When tiles 1, 2, 3, and 6 are in place, a 2x2 grid problem remains. A solvable 2x2 puzzle can be solved in a max of 4 moves, meaning very few extra nodes will be generated. The following board configuration represents an example of a "worst case scenario" after using our heuristic to arrange the upper and left column. 
+
+|   1|   2|   3|
+|---|---|---|
+|   5|   0|   6|
+|   4|   7|   8|
+
+We tested our heuristic against A* on one of the most difficult 8 puzzles, and the results were impressive. It's good at minimizing space complexity for hard puzzles, but bad at the end game, and easy puzzles. 
+
+|   6|   4|   7|
+|---|---|---|
+|   8|   5|   0|
+|  3|   2|  1|
+Number of nodes generated to solve: 758
+Number of moves to solve: 31
+Number of solutions so far: 1
+
+Number of nodes generated to solve: 13843
+Number of moves to solve: 31
+Number of solutions so far: 1
 
 |Case   	|  Number of moves 	|   Number of nodes generated	|   	|   	|
 |---	|---	|---	|---	|---	|
