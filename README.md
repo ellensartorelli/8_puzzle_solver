@@ -10,7 +10,7 @@ Our hueristic utilizes the approach of "divide and conquer" as it prioritizes th
 |   5|   0|   6|
 |   4|   7|   8|
 
-We tested our heuristic against A* on one of the most difficult 8 puzzles, and the results were impressive. It's good at minimizing space complexity for hard puzzles, but bad at the end game, and easy puzzles. 
+We tested our heuristic against A* on one of the most difficult 8 puzzles, and the results were impressive. It's good at minimizing space complexity for hard puzzles, but bad at the end game and easy puzzles. 
 
 |   6|   4|   7|
 |---|---|---|
