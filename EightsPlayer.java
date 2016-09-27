@@ -7,6 +7,11 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/*
+ * Ellen Sartorelli, Joy Wood
+ * All group members were present and contributing during all work on this project.
+ * I have neither given nor recieved unauthorized aid on this assignment.
+ */
 
 /*
  * Solves the 8-Puzzle Game (can be generalized to n-Puzzle)
