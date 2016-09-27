@@ -247,7 +247,6 @@ public class EightsPlayer {
 			}
 		//set the number of moves to the path size minus 1 (minus 1 for root node/initial state)
 			nummoves += path.size()-1;
-//			nummovesTotal += nummoves;
     }
 
 
@@ -345,18 +344,13 @@ public class EightsPlayer {
 		//comparator defined as anonymous function
 		 PriorityQueue<Node> Frontier = new PriorityQueue<Node>(1, new Comparator<Node>(){
 			 public int compare (Node n1, Node n2){
-//					System.out.println("Node 1: " + (n1.getgvalue() + n1.gethvalue()));
-//					System.out.println("Node 2: " + (n2.getgvalue() + n2.gethvalue()));
 				if(n1.getgvalue() + n1.gethvalue() < n2.getgvalue() + n2.gethvalue()){
-			//System.out.println("\n returning n1");
 					return -1;
 				}
 				else if(n1.getgvalue() + n1.gethvalue() == n2.getgvalue() + n2.gethvalue()){
-					//System.out.println("\n tie???");
 					return 0;
 				}
 				else{
-					//System.out.println("\n returning n2");
 					return 1;
 				}
 			 }
@@ -381,22 +375,9 @@ public class EightsPlayer {
 		//while frontier is not empty
 		while(!Frontier.isEmpty()){
 			//remove first node and set as current
-			//System.out.print("frontier before: [");
-//			for(Node x: Frontier){
-//				System.out.print((x.getgvalue()+x.getManhattanDistanceSum()) +", ");
-//			}
-//			System.out.print("] \n");
 			Node current = Frontier.poll();
-//			System.out.print("frontier after: [");
-//			for(Node x: Frontier){
-//				System.out.print((x.getgvalue()+x.getManhattanDistanceSum()) +", ");
-//			}
-//			System.out.print("] \n");
 			//add current to explore
 			Explored.add(current);
-//			System.out.println("Current pop "+"("+current.getgvalue()+", "+current.gethvalue()+")");
-//			current.print(current);
-
 			// if current is goal, return true
 			if(current.isGoal()){
 				printSolution(current);
@@ -404,7 +385,6 @@ public class EightsPlayer {
 			}
 			//if current's depth is greater than 13, return false
 			else if(current.getdepth() > maxDepth){
-//				System.out.println("Exceeded max depth");
 				return false;
 			}
 			//if we have neither found the goal nor exceeded max depth
@@ -422,7 +402,6 @@ public class EightsPlayer {
 					//for each boardOption called temp.... 
 					for(Node exploredNode : Explored){
 						if(Arrays.deepEquals(exploredNode.getboard(), temp)){
-//							System.out.println("repeats in explored");
 							//don't add state to Frontier if the board is already in Explored
 							addNode = false;
 						}
@@ -433,15 +412,9 @@ public class EightsPlayer {
 						Node option = new Node(current, depth, temp);
 					//set the states g value
 						option.setgvalue(current.getgvalue()+1);
-//						System.out.print("current ");
-//						System.out.println(current.getgvalue()+1);
-//						System.out.print("depth ");
-//						System.out.println(depth);
-//						System.out.println("heuristic "+heuristic);
 					//set the h value depending on the heuristic chosen
 						if(heuristic==0){
-							option.sethvalue(option.getManhattanDistanceSum()); //double check 
-//							System.out.println("mds "+option.getManhattanDistanceSum());
+							option.sethvalue(option.getManhattanDistanceSum()); 
 						}else{
 							option.sethvalue(option.divideAndConquerHueristic());
 						}
@@ -452,7 +425,6 @@ public class EightsPlayer {
 						for(Node frontierNode : Frontier){
 							//if the node's board is in the frontier... 
 							if(Arrays.deepEquals(option.getboard(), frontierNode.getboard())){
-//								System.out.println("repeats in frontier");
 								//if the node has a lower fn than the node in the frontier with the same board...
 								if(option.getgvalue()+option.gethvalue() < frontierNode.getgvalue()+frontierNode.gethvalue()){
 									//then reset the g and h of the frontier node to the g and h of the current node
@@ -468,26 +440,9 @@ public class EightsPlayer {
 						
 						//if the current node is NOT in the frontier
 						if(addToFrontier == true){
-//							if(option.isGoal()){
-//								System.out.println("added goal to frontier");
-//								
-//								printSolution(option);
-//								return true;
-//							}
 							Frontier.add(option);
-//							System.out.println("num nodes being incremented after adding node: "+numnodes);
 							numnodes++;
 						}
-					
-												
-//						System.out.println(count++);
-//						System.out.print("[");
-//						for(Node x: Frontier){
-//							System.out.println(("("+x.getgvalue()) +", "+x.gethvalue()+")");
-//							x.print(x);
-//						}
-//						System.out.print("] \n");
-						
 
 					}
 					addNode=true;
